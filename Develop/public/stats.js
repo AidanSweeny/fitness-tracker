@@ -2,6 +2,7 @@
 
 fetch("/api/workouts/range")
   .then(response => {
+    console.log("RES: " + response)
     return response.json();
   })
   .then(data => {
@@ -43,7 +44,7 @@ function populateChart(data) {
   let bar = document.querySelector("#canvas2").getContext("2d");
   let pie = document.querySelector("#canvas3").getContext("2d");
   let pie2 = document.querySelector("#canvas4").getContext("2d");
-
+  
   let lineChart = new Chart(line, {
     type: "line",
     data: {

@@ -1,3 +1,4 @@
+console.log("YES")
 const workoutTypeSelect = document.querySelector("#type");
 const cardioForm = document.querySelector(".cardio-form");
 const resistanceForm = document.querySelector(".resistance-form");
@@ -19,11 +20,10 @@ let shouldNavigateAway = false;
 
 async function initExercise() {
   let workout;
-
   if (location.search.split("=")[1] === undefined) {
     workout = await API.createWorkout()
-    console.log(workout)
   }
+  console.log(workout);
   if (workout) {
     location.search = "?id=" + workout._id;
   }
@@ -114,6 +114,7 @@ async function handleFormSubmit(event) {
     workoutData.duration = Number(resistanceDurationInput.value.trim());
   }
 
+  console.log(workoutData)
   await API.addExercise(workoutData);
   clearInputs();
   toast.classList.add("success");
