@@ -1,5 +1,5 @@
 # fitness-tracker
-For this assignment we were creating the API routes, HTML routes, and some other aspects of this fitness application tracker. For this assignment we were creating the database through mongodb and mongoose. To create the API routes I followed the demonstrated routes from the client side code. The routes for the HTML were / for the index page, /stats, for the stats page, and /workouts for the workouts page. I then had to put together a server.js page that would create the local connection, or the connection to heroku.
+For this assignment we were creating the API routes, HTML routes, and some other aspects of this fitness application tracker. For this assignment we were creating the database through mongodb and mongoose. To create the API routes I followed the demonstrated routes from the client side code. The routes for the HTML were / for the index page, /stats, for the stats page, and /workouts for the workouts page. I then had to put together a server.js page that would create the local connection, or the connection to mongoose. For the API routes I used two get routes, so that I could get the exercises and the entire workout. I also created a put route, so that the user could update workout and add a new exercise, and a post route that would post a new workout. Lastly there was also a delete. After this most of the front-side code was already created, and the app ran smoothly.
 
 ## Getting Started
 
@@ -31,12 +31,11 @@ This should then be moved to your desktop, or somewhere else on your computer. T
 * [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 * [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 * [Heroku](https://devcenter.heroku.com/categories/reference)
-* [SQL](https://dev.mysql.com/doc/)
 * [Express.js](https://expressjs.com/)
 
 ## Deployed Link
 
-* [See Live Site](https://damp-brook-93467.herokuapp.com/projects)
+* [See Live Site](https://protected-sierra-44051.herokuapp.com/)
 
 ## Authors
 
