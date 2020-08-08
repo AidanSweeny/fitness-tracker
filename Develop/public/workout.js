@@ -1,7 +1,6 @@
 async function initWorkout() {
   const lastWorkout = await API.getLastWorkout();
   console.log("Last workout:", lastWorkout);
-  
   if (lastWorkout) {
     document
       .querySelector("a[href='/exercise?']")
@@ -20,6 +19,7 @@ async function initWorkout() {
 }
 
 function tallyExercises(exercises) {
+  console.log("Tally: " + exercises)
   const tallied = exercises.reduce((acc, curr) => {
     if (curr.type === "resistance") {
       acc.totalWeight = (acc.totalWeight || 0) + curr.weight;
@@ -56,11 +56,10 @@ function renderWorkoutSummary(summary) {
     totalReps: "Total Reps Performed",
     totalDistance: "Total Distance Covered"
   };
-
+  console.log(summary)
   Object.keys(summary).forEach(key => {
     const p = document.createElement("p");
     const strong = document.createElement("strong");
-
     strong.textContent = workoutKeyMap[key];
     const textNode = document.createTextNode(`: ${summary[key]}`);
 

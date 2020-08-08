@@ -1,19 +1,24 @@
 const router = require("express").Router();
 const Workout = require("../models/workout.js");
+const Exercise = require("../models/exercise.js");
 
-router.put("/api/workouts/:id", (req, res) => {
-    console.log("PUT: " + req.body.exercises)
-    Workout.findByIdAndUpdate(req.params.id, { $push: { exercises: req.body } }
+module.exports = function(app) {
+app.put("/api/workouts/:id", (req, res) => {
+    Exercise.create(req.body)
+    .then((data) => 
+    Workout.findOneAndUpdate({_id : req.params.id}, { $push: { exercises: data._id } }
     )
     .then(result => {
       res.json(result);
     })
     .catch(err => {
       res.status(400).json(err);
-    });
+    })
+    )
 });
 
-router.post("/api/workouts", ({body}, res) => {
+app.post("/api/workouts", ({body}, res) => {
+    console.log(body);
     Workout.create(body)
     .then(result => {
         res.json(result);
@@ -23,8 +28,9 @@ router.post("/api/workouts", ({body}, res) => {
     })
 })
 
-router.get("/api/workouts/", ({ body }, res) => {
+app.get("/api/workouts/", ({ body }, res) => {
     Workout.find({})
+    .populate("exercises")
     .then(result => {
       res.json(result);
     })
@@ -33,13 +39,15 @@ router.get("/api/workouts/", ({ body }, res) => {
     });
 });
 
-router.get("/api/workouts/range", (req, res) => {
+app.get("/api/workouts/range", (req, res) => {
     Workout.find({ day: { $gte: req.query.start, $lte: req.query.end } })
+    .populate("exercises")
     .then(result => {
         if(result === undefined){
             res.json({})
         }
         else{
+            console.log(result)
             res.json(result);
         }
     })
@@ -57,5 +65,5 @@ router.get("/api/workouts/range", (req, res) => {
           });
       });
 });
+}
 
-module.exports = router;

@@ -1,4 +1,3 @@
-console.log("YES")
 const workoutTypeSelect = document.querySelector("#type");
 const cardioForm = document.querySelector(".cardio-form");
 const resistanceForm = document.querySelector(".resistance-form");
@@ -23,7 +22,6 @@ async function initExercise() {
   if (location.search.split("=")[1] === undefined) {
     workout = await API.createWorkout()
   }
-  console.log(workout);
   if (workout) {
     location.search = "?id=" + workout._id;
   }

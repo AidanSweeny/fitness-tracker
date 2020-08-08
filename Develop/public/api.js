@@ -7,12 +7,11 @@ const API = {
       console.log(err)
     }
     const json = await res.json();
-
+    console.log(json[json.length - 1])
     return json[json.length - 1];
   },
   async addExercise(data) {
     const id = location.search.split("=")[1];
-    console.log(JSON.stringify(data))
     const res = await fetch("/api/workouts/" + id, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
